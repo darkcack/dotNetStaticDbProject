@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <title>@ViewBag.Title </title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render()
+    @using WEBvize.Models;
+    @{
+
+        List<Category> categories = ViewBag.CategoryList;
+    }
+    <style>
+        .dropdown > .dropdown-menu {
+            top: 200%;
+            transition: 0.3s all ease-in-out;
+        }
+
+        .dropdown:hover > .dropdown-menu {
+            display: block;
+            top: 100%;
+        }
+
+        .dropdown-item:hover {
+            background-color: rgb(91,192,222);
+            color: white;
+        }
+
+        .dropdown-item > a:hover {
+            color: white;
+            text-decoration:
+        }
+
+        .dropdown-item > a {
+            background-color: white;
+        }
+
+        .dropdown > .dropdown-toggle:active {
+            /*Without this, clicking will make it sticky*/
+            pointer-events: none;
+        }
+
+    </style>
+
+</head>
+<body class="bg-light backgorund">
+
+   
+    @Html.Partial("Navbar")
+    <div class="container body-content">
+        @RenderBody()
+
+
+    </div>
+
+    <footer id="sticky-footer" class="py-1 bg-info text-white fixed-bottom" style="opacity:0.68;">
+        <div class="container text-center">
+            <small class="text-white" style="font-size:15px">
+                Mert Aktaş Web Programlama 2020&copy; En Sevdiğim film ------>
+                @Html.ActionLink("The Godfather", "FilmDetay", "Home", new { id = 1 }, new { @class = "btn btn-info" })
+            </small>
+        </div>
+    </footer>
+
+
+ 
+
+
+    @Scripts.Render("~/bundles/jquerymin")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @RenderSection("scripts", required: false)
+
+    <script>
+        $('#topheader .navbar-nav a').on('click', function () {
+            $('#myDIV .navbar-nav').find('span.active').removeClass('active');
+            $(this).parent('span').addClass('active');
+        });
+    </script>
+</body>
+
+</html>

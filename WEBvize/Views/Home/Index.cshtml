@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Ana Sayfa";
+    int x = 0;
+
+}
+
+<div style="padding-bottom:2vh"></div>
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+
+    @foreach (var item in Model)
+    {
+
+
+        <!--COL-3-->
+        <div class="col-3">
+
+            <div style="padding-bottom:2vh"></div>
+
+            <!--CARD-->
+            <div class="card ">
+
+                <!--CARD-BODY-->
+                <div class="card-body">
+
+                    <h4 class="card-title justify-content-between" style="min-height:14vh">@item.Name  </h4>
+                    <h6 class="card-subtitle" style="min-height:3vh">id=@item.id</h6>
+                    <hr class="bg-info" style="min-height:1px;max-height:1px;" />
+
+                    <p class="card-text justify-content-between" style="min-height:16vh">@item.Description</p>
+                    <h6 class="float-lg-left">@item.Year</h6>
+                    <br />
+
+                    <div class="float-sm-right">
+                        <hr class="bg-danger" style="min-height:1px;max-height:1px;" />
+                        @Html.ActionLink("Detay", "FilmDetay", "Home", new { id = item.id }, new { @class = "btn btn-outline-success" })
+                        @Html.ActionLink("Güncelle", "FilmGuncelle", "Home", new { id = item.id }, new { @class = "btn btn-outline-info" })
+                        @Html.ActionLink("Sil", "FilmSil", "Home", new { id = item.id }, new { @class = "btn btn-outline-danger" })
+
+                        <h6 class="card-subtitle" style="padding-top:15px">@item.Headliner </h6>
+                    </div>
+
+
+
+
+
+
+
+                </div>
+                <!--CARD-BODY-->
+
+
+
+            </div>
+            <!--CARD-->
+
+            <div style="padding-bottom:7vh"></div>
+
+        </div>
+        <!--COL-3-->
+
+        <div class="col-1"> </div>
+
+    }
+
+
+</div>

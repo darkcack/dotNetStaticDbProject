@@ -1,0 +1,73 @@
+﻿
+@using WEBvize.Models
+@model List<WEBvize.Models.Category>
+@{
+    ViewBag.Title = "Tüm Kategoriler";
+}
+
+
+    <div class="row">
+        <div class="col-4">
+            <div style="padding-bottom:2vh"></div>
+            <h2>@ViewBag.Title</h2>
+        </div>
+        <br />
+        <div class="col-4">
+            
+
+        </div>
+        <div class="col-4">
+            <div style="padding-bottom:10px"></div>
+
+        </div>
+        @foreach (var item in Model)
+        {
+            <!--COL-3-->
+            <div class="col-3">
+
+                <div style="padding-bottom:10px"></div>
+
+                <!--CARD-->
+                <div class="card ">
+
+                    <!--CARD-BODY-->
+                    <div class="card-body">
+
+                        <h3 class="card-title">@item.Name</h3>
+                        <hr class="bg-info" style="min-height:1px;max-height:1px;" />
+
+                        <p class="card-subtitle">Kategori Id: @item.id</p>
+                        <p class="card-text">
+                            @foreach (var deneme in item.movies)
+                            {
+                            <p>@deneme.Name [@deneme.Year]</p>
+                        }
+                            </p>
+                            <br />
+
+                            <div class="float-sm-right">
+                                <hr class="bg-danger" />
+                                @Html.ActionLink(@item.Name.ToString() + " Filmleri", "KategoriDetay", "Category", new { id = item.id }, new { @class = "btn btn-outline-info" })
+                                <div style="padding-bottom:10px"></div>
+
+                                @Html.ActionLink("Kategori Sil", "KategoriSil", "Category", new { id = item.id }, new { @class = "btn btn-outline-danger" })
+                            </div>
+                        </div>
+                        <!--CARD-BODY BİTTİ-->
+
+
+
+                    </div>
+                    <!-- CARD BİTTİ-->
+
+                    <div style="padding-bottom:8vh"></div>
+
+                </div>
+                <!--COL-3 BİTTİ-->
+
+                <div class="col-1"> </div>
+
+            }
+
+
+    </div>
